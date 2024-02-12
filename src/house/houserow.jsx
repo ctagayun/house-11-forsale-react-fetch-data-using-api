@@ -19,8 +19,8 @@ import currencyFormatter from "../helpers/currencyFormatter";
    </button>
  
   */
-const HouseRow = ({house, onRemoveItem }) => (
-    <tr>
+const HouseRow = ({house, onRemoveItem, selectedHouseSetter }) => (
+    <tr onClick={() => selectedHouseSetter(oldhouse => house)}>
      <td>{house.objectID} </td>
      <td>{house.address}</td>
      <td>{house.country}</td>

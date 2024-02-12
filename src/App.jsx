@@ -16,8 +16,10 @@ Concepts to Remember:
   is performed. For example we can fetch data from an API for example
 ===============================================
 Current Task:
-   - delete initialHouse array and initialize the useState with an
-     empty array.
+   - added housedetail component
+   - display housedetail component when click from houselist
+   - set another state to display HouseDetail:
+       const [selectedHouse, setSelectedHouse] = useState(); 
 
 ===============================================
 Previous Task: Using Reducer Hook
@@ -194,6 +196,7 @@ import './App.css'
 import Header from "./header";
 import HouseList from './house/houseList';
 import Search from './house/search';
+import HouseDetail from './house/housedetail';
 
 /*
       At the moment initialHouses is unstateful variable
@@ -344,7 +347,6 @@ const App = () => {
 
    const[houses, dispatchHouses] = React.useReducer(housesReducer, []);
 
-
    //The new function receives a reducer function called "housesReducer"
    //(see line 251)
    //and empty array [] and returns an array with two items:
@@ -361,6 +363,7 @@ const App = () => {
 
     //Introduce another state called "isError"
     const [isError, setIsError] = React.useState(false);
+
 
   /*Step 3: Handle all functions that modify state. 
      The first state transition function is 
@@ -463,6 +466,11 @@ const App = () => {
       house.country.toLowerCase().includes(stateOfSearchComponent.toLowerCase())
     );
 
+   //Introduce another state for displaying HouseDetail.
+   //I am not passing initial value that means selectedHouse 
+   //will be initiall undefined.
+   const [selectedHouse, setSelectedHouse] = useState(); 
+
   return (
     <>
      <Header  headerText={welcome} />   
@@ -478,18 +486,16 @@ const App = () => {
       <br></br>
 
       {isError && <p>Error in fetching data...</p>}
-
-      {isLoading ? (
-        <p> Loading Data...</p>
-      ):
-       <HouseList list={searchedHouses} 
-                   onRemoveHouse={handleRemoveHouse} 
-                   onAddHouse={handleAddHouse} 
-                   houseDispatcher = {dispatchHouses}/>  
-      }
-    
+      
+      {selectedHouse ? (
+          <HouseDetail house={selectedHouse} />  //if truthy display detail
+        ) : (                      
+          <HouseList list={searchedHouses} //if falsy display HouseList
+                      onRemoveHouse={handleRemoveHouse} 
+                      onAddHouse={handleAddHouse} 
+                      selectedHouseSetter= {setSelectedHouse}/>  //State
+        )}
     </>
- )
-}
+ )}
 
 export default App

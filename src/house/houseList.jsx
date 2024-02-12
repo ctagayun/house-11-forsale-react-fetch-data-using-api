@@ -28,7 +28,10 @@
 import * as React from 'react';
 import HouseRow  from './houserow';
 //import { HouseRowMemoized } from './houserow';
-const HouseList = ({list, onRemoveHouse, onAddHouse, houseDispatcher}) =>
+
+//We are not using selectedHouseSetter in HouseList. We just 
+//want to pass it as props to HouseRow
+const HouseList = ({list, onRemoveHouse, onAddHouse, selectedHouseSetter}) =>
     {
       const mySearchHouses = JSON.stringify(list);
       console.log("SearchedHouses = " + mySearchHouses );
@@ -63,6 +66,7 @@ const HouseList = ({list, onRemoveHouse, onAddHouse, houseDispatcher}) =>
                       house={record}
                       onRemoveItem = {onRemoveHouse} //contains the onRemoveItem handler
                       onAddHouse = {onAddHouse}
+                      selectedHouseSetter = {selectedHouseSetter} //pass to HouseRow the selected record
                   />
                 ))}
               </tbody>

@@ -1,3 +1,8 @@
+/*
+  Host this component in app.js. Display this component 
+  conditionally (display houselist or this component)
+*/
+
 import currencyFormatter from "../helpers/currencyFormatter";
 import defaultPhoto from "../images/defaultPhoto";
 
