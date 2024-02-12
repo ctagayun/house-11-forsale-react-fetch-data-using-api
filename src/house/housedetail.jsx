@@ -7,6 +7,8 @@ import currencyFormatter from "../helpers/currencyFormatter";
 import defaultPhoto from "../images/defaultPhoto";
 
 const HouseDetail = ({ house }) => {
+  const myHouse = JSON.stringify(house);
+  console.log("House Detail house Props = " + myHouse);
   return (
     <div className="row">
       <div className="col-6">
@@ -14,7 +16,7 @@ const HouseDetail = ({ house }) => {
           <img
             className="img-fluid"
             src={
-              house.photo ? `./houseImages/${house.photo}.jpeg` : defaultPhoto
+              house.photo ? `.src/images/houseImages/${house.photo}.jpeg` : defaultPhoto
             }
             alt="House pic"
           />
@@ -40,4 +42,4 @@ const HouseDetail = ({ house }) => {
   );
 };
 
-export default House;
+export default HouseDetail;

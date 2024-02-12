@@ -18,6 +18,7 @@ Concepts to Remember:
 Current Task:
    - added housedetail component
    - display housedetail component when click from houselist
+      https://app.pluralsight.com/ilx/video-courses/9a3771fa-626e-4708-8634-c49cc8616922/2e8c1f61-a9fa-48be-9e6c-4636fc0e17e1/95d8a52b-12fc-4acb-937b-e886c968d9b3
    - set another state to display HouseDetail:
        const [selectedHouse, setSelectedHouse] = useState(); 
 
@@ -469,7 +470,7 @@ const App = () => {
    //Introduce another state for displaying HouseDetail.
    //I am not passing initial value that means selectedHouse 
    //will be initiall undefined.
-   const [selectedHouse, setSelectedHouse] = useState(); 
+   const [selectedHouse, setSelectedHouse] = React.useState(); 
 
   return (
     <>
