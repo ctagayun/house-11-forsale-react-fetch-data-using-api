@@ -16,7 +16,7 @@ const HouseDetail = ({ house }) => {
           <img
             className="img-fluid"
             src={
-              house.photo ? `.src/images/houseImages/${house.photo}.jpeg` : defaultPhoto
+              house.photo ? `./src/images/houseImages/${house.photo}.jpeg` : defaultPhoto
             }
             alt="House pic"
           />
