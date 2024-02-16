@@ -250,6 +250,29 @@ const initialHouses =
     }
   ];  
 
+  const housesReducer = (state, action) => { //always receives a state 
+    //and action
+      switch (action.type){ //this is what it means by reducer function
+      //specifies how should state change based
+      //on the "action" passed by the reducerDispatch()
+      case 'GET_HOUSES':
+      return action.payload; //specifies how should state change  
+
+      case 'DELETE_HOUSE':
+      return state.filter(
+      (house) => action.payload.objectID !== house.objectID //specifies how should state change 
+      );
+      case 'ADD_HOUSE':
+      return action.payload;   
+
+      default:
+      throw new Error();
+      }
+      //action is always associated 
+      //with a type and "payload".
+
+      };
+
     /* The following  is a custom hook that will store the state in a 
      local storage. useStorageState which will keep the component's 
      state in sync with the browser's local storage.
@@ -319,28 +342,6 @@ const App = () => {
    based on the current state and the action.
   */
   
-   const housesReducer = (state, action) => { //always receives a state 
-                                              //and action
-      switch (action.type){ //this is what it means by reducer function
-                            //specifies how should state change based
-                            //on the "action" passed by the reducerDispatch()
-        case 'GET_HOUSES':
-          return action.payload; //specifies how should state change  
-
-        case 'DELETE_HOUSE':
-          return state.filter(
-            (house) => action.payload.objectID !== house.objectID //specifies how should state change 
-          );
-        case 'ADD_HOUSE':
-          return action.payload;   
-
-        default:
-           throw new Error();
-      }
-       //action is always associated 
-       //with a type and "payload".
-       
-      };
 
    // Step 2: In using REACT REDUCER:
    //First lets use a Reducer instead of const [houses, setHouses] = React.useState([]);
